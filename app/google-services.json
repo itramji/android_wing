@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "994511368458",
+    "firebase_url": "https://wing-4ad3f.firebaseio.com",
+    "project_id": "wing-4ad3f",
+    "storage_bucket": "wing-4ad3f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994511368458:android:b57c01ade02e3809",
+        "android_client_info": {
+          "package_name": "com.csoft.wing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "994511368458-c8s2lp222qieg4acrdpa2gidul43lnbo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.csoft.wing",
+            "certificate_hash": "10EB004D40EA5974CE49580B57A76D6993C7367C"
+          }
+        },
+        {
+          "client_id": "994511368458-2g34v10fjtuah5clvovbscvsprsfo6ki.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbbJ5O15ikcD1MY1gIrk_evRkQsH5gqdE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "994511368458-2g34v10fjtuah5clvovbscvsprsfo6ki.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

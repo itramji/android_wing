@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="domain">"@ec2-54-169-119-103.ap-southeast-1.compute.amazonaws.com"</string>
+    <string name="port">5222</string>
+
+    <string name="ftp_url">http://54.169.119.103/api.php?</string>
+    <string name="upload_file">http://54.169.119.103/uploadfile.php?</string>
+    <string name="contact_sync">http://54.169.119.103/contactssync.php?</string>
+    <string name="social_sync">http://54.169.119.103/socialsync.php?</string>
+    <string name="backup_chat">http://54.169.119.103/updatebackup.php?</string>
+    <string name="youtube_api_key">AIzaSyBvWgIHegQX5iiWGJ-3FPdD K8XGxLP0RgQ</string>
+    <string name="image_url">http://54.169.119.103/userim age/</string>
+    <string name="fb_image_url">https://graph.facebook.com/</string>
+
+</resources>

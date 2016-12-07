@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Wing</string>
+    <string name="skip">skip</string>
+    <string name="loading">Loding..</string>
 </resources>
