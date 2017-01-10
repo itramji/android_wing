@@ -1,7 +1,9 @@
 package com.csoft.wing.activity;
 
 import android.app.ProgressDialog;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,7 +19,7 @@ import android.widget.TextView;
 import com.csoft.wing.R;
 
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
     protected Toolbar toolbar;
     private TextView toolbarTitle;
     private ImageView backButton, addButton;
@@ -168,4 +170,30 @@ public class BaseActivity extends AppCompatActivity {
             transaction.commitNow();
         }
     }
+
+    public abstract void onPermissionGranted(String[] permissions, int requestCode);
+
+    public abstract void onPermissionDenied();
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (grantResults.length > 0) {
+            int totalGrant = 0;
+            for (int result : grantResults) {
+                if (result == PackageManager.PERMISSION_GRANTED) {
+                    totalGrant += 1;
+                }
+            }
+            if (totalGrant == grantResults.length) {
+                onPermissionGranted(permissions, requestCode);
+            } else {
+                onPermissionDenied();
+            }
+        } else {
+            onPermissionDenied();
+        }
+    }
+
+
 }

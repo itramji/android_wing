@@ -55,7 +55,7 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, GetStartedActivity.class));
     }
 
 

@@ -2,4 +2,9 @@
     <string name="app_name">Wing</string>
     <string name="skip">skip</string>
     <string name="loading">Loding..</string>
+    <string name="copyrights">\@2015 Wing. All Right Reserved.</string>
+    <string name="get_started">Get Started</string>
+    <string name="search">Search</string>
+    <string name="what_is_ur_number">What\'s your phone number?</string>
+    <string name="mobile_number">Mobile Number</string>
 </resources>

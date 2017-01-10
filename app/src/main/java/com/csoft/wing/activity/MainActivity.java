@@ -23,7 +23,6 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         initToolbar();
-
         ViewPager viewPager = (ViewPager) findViewById(R.id.real_tab_content);
         TabsPagerAdapter tabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 
@@ -49,5 +48,15 @@ public class MainActivity extends BaseActivity {
 
         mTabHost.addTab(mTabHost.newTabSpec(text).setIndicator(view),
                 FragmentTab.class, null);
+    }
+
+    @Override
+    public void onPermissionGranted(String[] permissions, int requestCode) {
+
+    }
+
+    @Override
+    public void onPermissionDenied() {
+
     }
 }
