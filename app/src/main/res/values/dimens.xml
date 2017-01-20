@@ -30,5 +30,5 @@
     <dimen name="tab_space_bottom_line">36sp</dimen>
     <dimen name="tab_space_unselected_top">6sp</dimen>
 
-    <dimen name="large_text_size">28sp</dimen>
+    <dimen name="large_text_size">26sp</dimen>
 </resources>

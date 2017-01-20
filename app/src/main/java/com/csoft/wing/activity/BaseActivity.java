@@ -19,7 +19,7 @@ import android.widget.TextView;
 import com.csoft.wing.R;
 
 
-public abstract class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity {
     protected Toolbar toolbar;
     private TextView toolbarTitle;
     private ImageView backButton, addButton;
@@ -171,9 +171,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public abstract void onPermissionGranted(String[] permissions, int requestCode);
+    protected void onPermissionGranted(String[] permissions, int requestCode){
 
-    public abstract void onPermissionDenied();
+    }
+
+    protected void onPermissionDenied(){
+
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -194,6 +198,5 @@ public abstract class BaseActivity extends AppCompatActivity {
             onPermissionDenied();
         }
     }
-
 
 }

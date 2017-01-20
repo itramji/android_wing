@@ -34,7 +34,7 @@ public class GetStartedActivity extends BaseActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.get_started:
-                startActivityForResult(new Intent(this, CountrySelectionActivity.class), 121);
+                startActivity(new Intent(this, CountryActivity.class));
                 break;
         }
     }

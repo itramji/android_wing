@@ -1,13 +1,11 @@
 package com.csoft.wing.activity;
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 
 import com.csoft.wing.R;
 
 public class PhoneNumberRegistrationActivity extends BaseActivity {
 
-    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,9 +15,8 @@ public class PhoneNumberRegistrationActivity extends BaseActivity {
     }
 
     private void init() {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
-        mToolbar.setTitle(getString(R.string.app_name));
+        initToolbar();
+        setToolbarTitle(getString(R.string.app_name));
     }
 
     @Override

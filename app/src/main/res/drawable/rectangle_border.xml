@@ -7,11 +7,11 @@
         android:color="@android:color/white" >
     </solid>
 
-    <!-- view border color and width -->
+    <!-- view border color and width
     <stroke
         android:width="1px"
         android:color="@android:color/black" >
-    </stroke>
+    </stroke>-->
 
     <corners
         android:radius="10dp"/>
