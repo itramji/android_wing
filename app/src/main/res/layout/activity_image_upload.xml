@@ -60,20 +60,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
+                android:ellipsize="end"
                 android:gravity="center"
                 android:hint="@string/name"
                 android:maxLines="1"
                 android:minLines="1"
-                android:ellipsize="end"
-                android:singleLine="true"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
+                android:singleLine="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/progressLoader"
-                app:layout_constraintVertical_bias="0.13"
-                android:focusable="false"/>
+                app:layout_constraintVertical_bias="0.13" />
 
         </LinearLayout>
 
@@ -81,10 +80,10 @@
             android:id="@+id/continue_btn"
             android:layout_width="150dp"
             android:layout_height="33dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/rounded_rect"
             android:text="@string/continue_txt"
-            android:textAllCaps="false"
-            android:layout_marginBottom="10dp"/>
+            android:textAllCaps="false" />
     </LinearLayout>
 </ScrollView>

@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.provider.MediaStore;
 
+import com.csoft.wing.activity.ContactPermissionActivity;
 import com.csoft.wing.activity.CountrySelectionActivity;
 import com.csoft.wing.activity.ImageUploadActivity;
+import com.csoft.wing.activity.MainActivity;
 import com.csoft.wing.activity.PhoneNumberRegistrationActivity;
 
 /**
@@ -40,9 +42,26 @@ public class Launcher {
         activity.startActivityForResult(lIntent, requestCode);
     }
 
-    public static void launchCameraIntent(Activity activity, int requestCode){
+    public static void launchCameraIntent(Activity activity, int requestCode) {
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         activity.startActivityForResult(cameraIntent, requestCode);
     }
 
+    public static void launchPermissionScreen(Activity activity, Intent intent) {
+        Intent lIntent = new Intent(activity, ContactPermissionActivity.class);
+        if (intent != null) {
+            lIntent.putExtras(intent);
+        }
+        activity.startActivity(lIntent);
+    }
+
+    public static void launchLandingScreen(Activity activity, Intent intent) {
+        Intent lIntent = new Intent(activity, MainActivity.class);
+        if (intent != null) {
+            lIntent.putExtras(intent);
+        }
+        lIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        lIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(lIntent);
+    }
 }

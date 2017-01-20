@@ -44,7 +44,8 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".activity.PhoneNumberRegistrationActivity" />
         <activity android:name=".activity.CountryActivity" />
-        <activity android:name=".activity.ImageUploadActivity"></activity>
+        <activity android:name=".activity.ImageUploadActivity" />
+        <activity android:name=".activity.ContactPermissionActivity"></activity>
     </application>
 
 </manifest>

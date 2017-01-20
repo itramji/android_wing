@@ -77,6 +77,8 @@ public class ImageUploadActivity extends BaseActivity implements View.OnClickLis
                 AppCompatEditText countryEditText = (AppCompatEditText) findViewById(R.id.country);
                 if (countryEditText.getText().toString().isEmpty()) {
                     showErrorMessage(getString(R.string.please_enter_name));
+                } else if (!Utils.isNetworkAvailable(this)) {
+                    showErrorMessage(getString(R.string.network_error));
                 } else {
                     RequestParams params = new RequestParams();
                     params.put(KEY_CMD, USER_LOGIN);
@@ -113,6 +115,7 @@ public class ImageUploadActivity extends BaseActivity implements View.OnClickLis
 
             case 1000:
                 Log.e("TAG", "onEvent: ");
+                Launcher.launchPermissionScreen(this, null);
                 break;
         }
     }

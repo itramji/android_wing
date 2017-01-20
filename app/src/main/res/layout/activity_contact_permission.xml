@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_bg"
+    android:orientation="vertical"
+    tools:context="com.csoft.wing.activity.ContactPermissionActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@color/lightGray"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/connect_contacts" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/allow_discovery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView2"
+            android:layout_centerHorizontal="true"
+            android:text="@string/allow_discovery"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/allow_discovery"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="@string/turn_on_permission"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:id="@+id/permission_msg"/>
+
+        <Switch
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/permission_msg"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/switch_permission"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="@string/continue_txt"
+            android:background="@drawable/rounder_button_bg"
+            android:paddingLeft="32dp"
+            android:textAllCaps="false"
+            android:layout_centerHorizontal="true"
+            android:paddingRight="32dp"
+            android:layout_below="@+id/switch_permission"
+            android:id="@+id/continue_btn"
+            android:layout_marginBottom="8dp"/>
+    </RelativeLayout>
+</RelativeLayout>
