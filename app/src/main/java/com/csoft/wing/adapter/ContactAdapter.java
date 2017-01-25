@@ -9,7 +9,7 @@ import android.view.ViewGroup;
  * Created by tringapps-admin on 20/1/17.
  */
 
-class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHolder> {
+public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHolder> {
     public ContactAdapter(Cursor contacts) {
     }
 

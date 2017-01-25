@@ -8,21 +8,12 @@ import com.csoft.wing.activity.ContactPermissionActivity;
 import com.csoft.wing.activity.CountrySelectionActivity;
 import com.csoft.wing.activity.ImageUploadActivity;
 import com.csoft.wing.activity.MainActivity;
-import com.csoft.wing.activity.PhoneNumberRegistrationActivity;
 
 /**
  * Created by tringapps-admin on 20/1/17.
  */
 
 public class Launcher {
-
-    public static void launchPhoneNumberRegistration(Activity activity, Intent intent) {
-        Intent lIntent = new Intent(activity, PhoneNumberRegistrationActivity.class);
-        if (intent != null) {
-            lIntent.putExtras(intent);
-        }
-        activity.startActivity(lIntent);
-    }
 
     public static void launchImageUpload(Activity activity, Intent intent) {
         Intent lIntent = new Intent(activity, ImageUploadActivity.class);
@@ -47,6 +38,12 @@ public class Launcher {
         activity.startActivityForResult(cameraIntent, requestCode);
     }
 
+    public static void lauchGalleryIntent(Activity activity, int requestCode) {
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        activity.startActivityForResult(galleryIntent, requestCode);
+    }
+
     public static void launchPermissionScreen(Activity activity, Intent intent) {
         Intent lIntent = new Intent(activity, ContactPermissionActivity.class);
         if (intent != null) {
@@ -62,6 +59,14 @@ public class Launcher {
         }
         lIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         lIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(lIntent);
+    }
+
+    public static void launchMainActivity(Activity activity, Intent intent){
+        Intent lIntent = new Intent(activity, MainActivity.class);
+        if (intent != null) {
+            lIntent.putExtras(intent);
+        }
         activity.startActivity(lIntent);
     }
 }

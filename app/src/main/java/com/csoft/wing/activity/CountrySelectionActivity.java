@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.csoft.wing.R;
 import com.csoft.wing.adapter.CountrySelectionAdapter;
-import com.csoft.wing.adapter.item.decorator.StickyHeaderItemDecorator;
+import com.csoft.wing.common.ui.custom.views.IndexView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,7 +14,10 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class CountrySelectionActivity extends BaseActivity {
+public class CountrySelectionActivity extends BaseActivity implements IndexView.IndexListener {
+
+    private RecyclerView mList;
+    private JSONArray mArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +27,13 @@ public class CountrySelectionActivity extends BaseActivity {
     }
 
     private void init() {
-        RecyclerView countryList = (RecyclerView) findViewById(R.id.country_list);
-        countryList.setLayoutManager(new LinearLayoutManager(this));
-        countryList.addItemDecoration(new StickyHeaderItemDecorator());
-        countryList.setAdapter(new CountrySelectionAdapter(this, loadJSONFromAsset()));
+        mArray = loadJSONFromAsset();
+        mList = (RecyclerView) findViewById(R.id.country_list);
+        mList.setLayoutManager(new LinearLayoutManager(this));
+        mList.setAdapter(new CountrySelectionAdapter(this, mArray));
+
+        IndexView indexView = (IndexView) findViewById(R.id.index_view);
+        indexView.setListerner(this);
     }
 
     @Override
@@ -58,5 +64,21 @@ public class CountrySelectionActivity extends BaseActivity {
             return null;
         }
 
+    }
+
+    @Override
+    public void onIndexClickListener(String character) {
+        try {
+            int position = -1;
+            for (int i = 0; i < mArray.length(); i++) {
+                if (mArray.getJSONObject(i).getString("name").startsWith(character)) {
+                    position = i;
+                    break;
+                }
+            }
+            ((LinearLayoutManager)mList.getLayoutManager()).scrollToPositionWithOffset(position, 0);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

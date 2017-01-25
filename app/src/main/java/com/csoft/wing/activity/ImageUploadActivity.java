@@ -1,7 +1,7 @@
 package com.csoft.wing.activity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
 import android.util.Log;
@@ -10,6 +10,7 @@ import android.view.View;
 import com.csoft.wing.R;
 import com.csoft.wing.common.AppConstants;
 import com.csoft.wing.common.Utils;
+import com.csoft.wing.common.ui.custom.views.GlideImageView;
 import com.csoft.wing.common.ui.custom.views.ProgressLoader;
 import com.csoft.wing.common.ui.launcher.Launcher;
 import com.csoft.wing.manager.network.NetworkManager;
@@ -31,7 +32,7 @@ import static com.csoft.wing.common.AppConstants.USER_LOGIN;
 
 public class ImageUploadActivity extends BaseActivity implements View.OnClickListener {
 
-    private static final int TAKE_PICTURE = 121;
+    private static final int GALLERY_PICTURE = 121;
 
     @Override
     protected void onStart() {
@@ -48,7 +49,7 @@ public class ImageUploadActivity extends BaseActivity implements View.OnClickLis
 
     private void iniViews() {
 
-        findViewById(R.id.upload_image).setOnClickListener(this);
+        findViewById(R.id.profile_image).setOnClickListener(this);
         findViewById(R.id.continue_btn).setOnClickListener(this);
 
         ProgressLoader progressLoader = (ProgressLoader) findViewById(R.id.progressLoader);
@@ -69,8 +70,8 @@ public class ImageUploadActivity extends BaseActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.upload_image:
-                Launcher.launchCameraIntent(this, TAKE_PICTURE);
+            case R.id.profile_image:
+                Launcher.lauchGalleryIntent(this, GALLERY_PICTURE);
                 break;
 
             case R.id.continue_btn:
@@ -80,11 +81,12 @@ public class ImageUploadActivity extends BaseActivity implements View.OnClickLis
                 } else if (!Utils.isNetworkAvailable(this)) {
                     showErrorMessage(getString(R.string.network_error));
                 } else {
+                    String phoneNumber = PreferenceManager.getString(PreferenceManager.PHONE_NUMBER);
                     RequestParams params = new RequestParams();
                     params.put(KEY_CMD, USER_LOGIN);
                     params.put(KEY_PLATFORM, ANDROID);
-                    params.put(KEY_MOBILE_NUMBER, "8939548583");
-                    params.put(KEY_MOBILE_CODE, "91");
+                    params.put(KEY_MOBILE_NUMBER, phoneNumber.substring(3, phoneNumber.length()));
+                    params.put(KEY_MOBILE_CODE, phoneNumber.substring(0,2));
                     params.put(KEY_COUNTRY_CODE, PreferenceManager.getString(AppConstants.COUNTRY));
                     params.put(KEY_DEVICE_ID, Utils.getDeviceId(this));
 
@@ -102,9 +104,12 @@ public class ImageUploadActivity extends BaseActivity implements View.OnClickLis
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-            case TAKE_PICTURE:
-                String imageUri = Utils.getImageUri(this,
-                        (Bitmap) data.getExtras().get("data"));
+            case GALLERY_PICTURE:
+                Uri uri = data.getData();
+                if (data != null) {
+                    GlideImageView profileImage = (GlideImageView) findViewById(R.id.profile_image);
+                    profileImage.loadRoundImage(uri);
+                }
                 break;
         }
     }
@@ -114,7 +119,12 @@ public class ImageUploadActivity extends BaseActivity implements View.OnClickLis
         switch (event.getId()) {
 
             case 1000:
-                Log.e("TAG", "onEvent: ");
+                Log.e("TAG", "onEvent: " + event.toString());
+                Registration registration = (Registration) event.getObject();
+                if (registration != null) {
+                    PreferenceManager.putString(AppConstants.KEY_CHAT_APP_ID, registration.getChatappId());
+                    PreferenceManager.putString(AppConstants.KEY_USER_ID, registration.getChatappId());
+                }
                 Launcher.launchPermissionScreen(this, null);
                 break;
         }

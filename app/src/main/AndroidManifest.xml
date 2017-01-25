@@ -38,14 +38,26 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".activity.GetStartedActivity" />
+        <activity
+            android:name=".activity.GetStartedActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.CountrySelectionActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".activity.PhoneNumberRegistrationActivity" />
-        <activity android:name=".activity.CountryActivity" />
-        <activity android:name=".activity.ImageUploadActivity" />
-        <activity android:name=".activity.ContactPermissionActivity"></activity>
+        <activity
+            android:name=".activity.CountryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ImageUploadActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ContactPermissionActivity"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="fd0179732fcaa5c127f8a75be09885dc4ab145fd" />
     </application>
 
 </manifest>

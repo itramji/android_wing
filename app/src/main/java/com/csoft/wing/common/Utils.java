@@ -54,6 +54,15 @@ public class Utils {
 
     }
 
+    public static boolean isEmailValid(String email) {
+        String reg = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+        return !(email == null || !email.matches(reg));
+    }
+
+    public static boolean isPhNumberValid(String phNumberStr) {
+        return phNumberStr.length() >= 10;
+    }
+
     public static class CustomPhoneStateListener extends PhoneStateListener {
 
         //private static final String TAG = "PhoneStateChanged";

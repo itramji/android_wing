@@ -17,4 +17,11 @@ public class AppConstants {
     public static final String KEY_COUNTRY_CODE = "country_code";
     public static final String KEY_DEVICE_ID = "device_id";
 
+    /**
+     * User Details
+     */
+    public static final String KEY_UPDATE_NICK_NAME = "updatenickname";
+    public static final String KEY_CHAT_APP_ID = "chatapp_id";
+    public static final String KEY_USER_ID = "user_id";
+    public static final String KEY_NICK_NAME ="nickname";
 }

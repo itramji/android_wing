@@ -1,10 +1,9 @@
 package com.csoft.wing.adapter;
 
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.csoft.wing.fragment.ContactsFragment;
 import com.csoft.wing.fragment.FragmentTab;
 
 public class TabsPagerAdapter extends FragmentPagerAdapter {
@@ -16,7 +15,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int index){
         switch (index){
             case 0:
-                return new ContactsFragment();
+                return new FragmentTab();
             case 1:
                 return new FragmentTab();
             case 2:

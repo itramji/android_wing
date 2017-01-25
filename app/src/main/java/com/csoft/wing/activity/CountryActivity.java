@@ -9,11 +9,16 @@ import com.csoft.wing.R;
 import com.csoft.wing.common.AppConstants;
 import com.csoft.wing.common.ui.launcher.Launcher;
 import com.csoft.wing.manager.preference.PreferenceManager;
+import com.digits.sdk.android.AuthCallback;
+import com.digits.sdk.android.AuthConfig;
+import com.digits.sdk.android.Digits;
+import com.digits.sdk.android.DigitsException;
+import com.digits.sdk.android.DigitsSession;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class CountryActivity extends BaseActivity implements View.OnClickListener {
+public class CountryActivity extends BaseActivity implements View.OnClickListener, AuthCallback {
 
     private AppCompatTextView countryText;
 
@@ -27,7 +32,6 @@ public class CountryActivity extends BaseActivity implements View.OnClickListene
 
     private void initView() {
         countryText = (AppCompatTextView) findViewById(R.id.country);
-
         findViewById(R.id.continue_btn).setOnClickListener(this);
         findViewById(R.id.country_select).setOnClickListener(this);
     }
@@ -39,7 +43,6 @@ public class CountryActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void onPermissionDenied() {
-
     }
 
     @Override
@@ -53,7 +56,11 @@ public class CountryActivity extends BaseActivity implements View.OnClickListene
                 if (countryText.getText().toString().equals(getString(R.string.country))) {
                     showErrorMessage(getString(R.string.please_select_country));
                 } else {
-                    Launcher.launchImageUpload(this, null);
+                    AuthConfig.Builder authConfigBuilder = new AuthConfig.Builder()
+                            .withAuthCallBack(this)
+                            .withPhoneNumber(PreferenceManager.getString(PreferenceManager.COUNTRY));
+
+                    Digits.authenticate(authConfigBuilder.build());
                 }
                 break;
         }
@@ -69,7 +76,7 @@ public class CountryActivity extends BaseActivity implements View.OnClickListene
                     try {
                         JSONObject object = new JSONObject(data.getStringExtra(AppConstants.COUNTRY));
                         countryText.setText(object.getString("name"));
-                        PreferenceManager.putString(PreferenceManager.COUNTRY, object.getString("code"));
+                        PreferenceManager.putString(PreferenceManager.COUNTRY, object.getString("phone"));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -77,5 +84,16 @@ public class CountryActivity extends BaseActivity implements View.OnClickListene
                 }
                 break;
         }
+    }
+
+    @Override
+    public void success(DigitsSession session, String phoneNumber) {
+        PreferenceManager.putString(PreferenceManager.PHONE_NUMBER, phoneNumber);
+        Launcher.launchImageUpload(this, null);
+    }
+
+    @Override
+    public void failure(DigitsException error) {
+
     }
 }

@@ -14,6 +14,7 @@ public class PreferenceManager {
     private static final String preferenceName = "wing";
 
     public static final String COUNTRY = "COUNTRY";
+    public static final String PHONE_NUMBER = "PHONE_NUMBER";
 
     private static SharedPreferences getSharedPreference() {
         SharedPreferences preferences = WingApplication.getInstance()

@@ -11,10 +11,12 @@
     <string name="submit">Submit</string>
     <string name="continue_txt">Continue</string>
     <string name="ok">OK</string>
-    <string name="please_select_country">Please select country</string>
+    <string name="please_select_country">Please select the country code</string>
     <string name="name">Name</string>
     <string name="please_enter_name">Please enter name</string>
     <string name="network_error">Please Check Internet Connection</string>
     <string name="allow_discovery">Allow Discovery</string>
     <string name="turn_on_permission">Turn on to allow your phone number to \n be displayed in your friends  Contacts.</string>
+    <string name="consumer_key">gE39N6aNcWaV1sTOq7ztuUsFm</string>
+    <string name="consumer_secret_key">bBDtGLXkO4un4bl0X74WxVK1tp5h2Iv3yDC4HVpVf7h8dEF0lf</string>
 </resources>

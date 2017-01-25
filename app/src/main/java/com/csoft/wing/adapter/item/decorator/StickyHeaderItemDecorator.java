@@ -17,6 +17,7 @@ public class StickyHeaderItemDecorator extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView recyclerView, RecyclerView.State state) {
         super.getItemOffsets(outRect, view, recyclerView, state);
+        outRect.set(0,0,0,1);
     }
 
     @Override
